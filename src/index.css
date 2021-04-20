@@ -8,9 +8,24 @@ body {
 }
 
 .container{
+  position: relative;
   display: flex;
   justify-content: center;
 }
 #bgCanvas{
   border: 1px solid #000;
+}
+#aircraftCanvas{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  border: 1px solid red;
+}
+#bulletCanvas{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  border: 1px solid green;
 }

@@ -1,6 +1,6 @@
 /** @type {HTMLCanvasElement} */
 
-function loadBackground(bgUrl, bgCanvas, completeCallback) {
+function loadBackground(bgUrl, bgCanvas) {
   const context = bgCanvas.getContext("2d");
 
   let width = bgCanvas.width;
@@ -9,12 +9,7 @@ function loadBackground(bgUrl, bgCanvas, completeCallback) {
   let img = new Image();
   img.src = bgUrl;
   img.onload = function () {
-    // context.drawImage(img, 0, 0, width, height);
-    // context.drawImage(img, 0, -height, width, height);
     bgMove();
-    // setInterval(() => {
-        
-    // }, 20);
   };
   function bgMove() {
     // console.log('111', y)
