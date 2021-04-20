@@ -17,8 +17,8 @@ function CreateBullet(bulletUrl, aricraft, bulletCanvas) {
 function Bullet(x, y, w, h, imageURL, bulletCanvas) {
   this.x = x;
   this.y = y;
-  this.w = w;
-  this.h = h;
+  this.width = w;
+  this.height = h;
   this.canvas = bulletCanvas;
   var image = new Image();
   image.src = imageURL;
@@ -27,7 +27,7 @@ function Bullet(x, y, w, h, imageURL, bulletCanvas) {
 // 画子弹
 Bullet.prototype.draw = function () {
   var context = this.canvas.getContext("2d");
-  context.drawImage(this.Image, this.x, this.y, this.w, this.h);
+  context.drawImage(this.Image, this.x, this.y, this.width, this.height);
 };
 
 // 子弹移动的方法

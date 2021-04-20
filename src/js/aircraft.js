@@ -1,5 +1,5 @@
 /** @type {HTMLCanvasElement} */
-function createAircraft(width, height, imgUrl, canvas) {
+function CreateAircraft(width, height, imgUrl, canvas) {
   console.log("aircraftCanvas", canvas);
   const canvasWidth = canvas.width;
   const canvasHeight = canvas.height;
@@ -88,7 +88,7 @@ function Aircraft(x, y, width, height, imgUrl, canvas) {
       context.clearRect(0, 0, 320, 568);
       this.draw(context);
     }, 10);
-    console.log("loaded");
+    // console.log("loaded");
   };
   this.draw = () => {
     // let context = canvas.getContext("2d");
@@ -105,4 +105,4 @@ function Aircraft(x, y, width, height, imgUrl, canvas) {
     );
   };
 }
-module.exports = { createAircraft };
+module.exports = { CreateAircraft };
