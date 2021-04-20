@@ -12,7 +12,6 @@ function createAircraft(width, height, imgUrl, canvas) {
     const event = e || window.event;
     switch (event.keyCode) {
       case 37: {
-        console.log("1");
         // 左
         aircraft.left = true;
         break;

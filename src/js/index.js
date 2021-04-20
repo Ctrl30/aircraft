@@ -22,7 +22,7 @@ window.onload = () => {
   // 发子弹
   setInterval(function () {
     // 创建子弹
-    const bullet = CreateBullet(bulletImgSrc, aircraft);
+    const bullet = CreateBullet(bulletImgSrc, aircraft, bulletCanvas);
     // 将每次创建出来的子弹,存入到数组中
     bulletArray.push(bullet);
   }, 200);
@@ -34,8 +34,10 @@ window.onload = () => {
       if (bulletArray[i].isOutScreen()) {
         bulletArray.splice(i, 1);
       }
-      bulletArray[i].move();
-      bulletArray[i].draw(bulletCanvas);
+    //   if (bulletArray[i]) { //防止越界
+          bulletArray[i]?.move();
+          bulletArray[i]?.draw();
+    //   }
 
       var flag = 0; //用于控制是否continue
       //    for(var j = 0; j < enemyArray.length; j++){
@@ -53,5 +55,5 @@ window.onload = () => {
       //        continue;
       //    }
     }
-  }, 20);
+  }, 30);
 };
