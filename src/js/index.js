@@ -32,7 +32,7 @@ window.onload = () => {
   let time2;
   let time3;
 
- time1 = setInterval(() => {
+  time1 = setInterval(() => {
     let number = getRandNum(1, 3); // 随机的敌机
     let enemyAirCraft;
     switch (number) {
@@ -75,14 +75,14 @@ window.onload = () => {
   }, 50);
 
   // 发子弹
-  time2 =  setInterval(function () {
+  time2 = setInterval(function () {
     // 创建子弹
     const bullet = CreateBullet(bulletImgSrc, aircraft, bulletCanvas);
     // 将每次创建出来的子弹,存入到数组中
     bulletArray.push(bullet);
   }, 200);
   // 子弹移动
-  time3 =setInterval(function () {
+  time3 = setInterval(function () {
     bullet.clearRect(0, 0, 320, 568);
     for (var i = 0; i < bulletArray.length; i++) {
       // 判断: 当子弹超出屏幕之后,将超出的子弹在数组中干掉
@@ -95,39 +95,42 @@ window.onload = () => {
       //   }
 
       var flag = 0; //用于控制是否continue
-         for(var j = 0; j < enemyArray.length; j++){
-             if(isCrash(bulletArray[i],enemyArray[j])){
-                 enemyArray.splice(j,1);
-                 j--;
-                 bulletArray.splice(i,1);
-                 i--;
-                 flag = 1;
-                 break;
-             }
-         }
-         if(flag == 1){
-             continue;
-         }
+      for (var j = 0; j < enemyArray.length; j++) {
+        if (isCrash(bulletArray[i], enemyArray[j])) {
+          enemyArray.splice(j, 1);
+          j--;
+          bulletArray.splice(i, 1);
+          i--;
+          flag = 1;
+          break;
+        }
+      }
+      if (flag == 1) {
+        continue;
+      }
     }
   }, 30);
-  function isHit(enemy, aircraft) {
-      
-  }
+
+  //判断对象是否相交（有交集）
   function isCrash(enemy, aircraft) {
-    const minX1 = enemy.x;
-    const minY1 = enemy.y;
-    const maxX1 = enemy.x + enemy.width;
-    const maxY1 = enemy.y + enemy.height;
+    console.log("enemy", enemy);
+    console.log("aircraft", aircraft);
+    //分别获取2个矩形的最值
+    const minX1 = enemy.x; //47
+    const minY1 = enemy.y; // 380
+    const maxX1 = enemy.x + enemy.width; // 47+46 = 93
+    const maxY1 = enemy.y + enemy.height; // 380 + 64 = 444
 
-    const minX2 = aircraft.x;
-    const minY2 = aircraft.y;
-    const maxX2 = aircraft.x + aircraft.width;
-    const maxY2 = aircraft.y + aircraft.height;
+    const minX2 = aircraft.x; // 91
+    const minY2 = aircraft.y; // 436
+    const maxX2 = aircraft.x + aircraft.width; // 91 + 66 = 157
+    const maxY2 = aircraft.y + aircraft.height; // 436 + 82 = 518
 
-    const minX = Math.max(minX1, minX2);
-    const minY = Math.max(minY1, minY2);
-    const maxX = Math.min(maxX1, maxX2);
-    const maxY = Math.min(maxY1, maxY2);
+    //相交矩形的最值
+    const minX = Math.max(minX1, minX2); // 91
+    const minY = Math.max(minY1, minY2); //  436
+    const maxX = Math.min(maxX1, maxX2); // 93
+    const maxY = Math.min(maxY1, maxY2); // 444
     if (minX < maxX && minY < maxY) {
       return true;
     }
