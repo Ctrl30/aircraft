@@ -7,8 +7,8 @@ function CreateEmemy(width, height, enemyUrl, canvas) {
 }
 function Enemy(width, height, enemyUrl, canvas) {
   const canvasWidth = canvas.width;
-  const canvasHeight = canvas.height;
-  const context = canvas.getContext("2d");
+//   const canvasHeight = canvas.height;
+//   const context = canvas.getContext("2d");
   const x = getRandNum(0, canvasWidth - width);
   let y = 0;
   this.x = x;
