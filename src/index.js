@@ -1,10 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter,Route,Switch} from 'react-router-dom';
 import './index.css';
-import App from './App';
+import Aircraft from './pages/aircraft';
+import Save from './pages/save';
 
 ReactDOM.render(
-    <App />,
+  <HashRouter>
+  <Switch>
+      <Route path="/save" component={Save} exact />
+      <Route path="/" component={Aircraft} />
+  </Switch>
+</HashRouter>,
   document.getElementById('root')
 );
 
