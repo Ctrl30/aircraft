@@ -59,17 +59,19 @@ window.onload = () => {
     for (let i = 0; i < enemyArray.length; i++) {
       enemyArray[i]?.move();
       enemyArray[i]?.draw();
-      // 判断是否出去
-      if (enemyArray[i].isOutScreen()) {
-        enemyArray.splice(i, 1);
-      }
+      console.log("enemyArray.length", enemyArray.length);
+
       //   判断是否相撞
-      if (isCrash(enemyArray[i], aircraft)) {
+      if (isCrash(enemyArray[i], aircraft, i)) {
         clearInterval(timer);
         clearInterval(time1);
         clearInterval(time2);
         clearInterval(time3);
         alert("GG");
+      }
+      // 判断是否出去
+      if (enemyArray[i].isOutScreen()) {
+        enemyArray.splice(i, 1);
       }
     }
   }, 50);
@@ -96,7 +98,7 @@ window.onload = () => {
 
       var flag = 0; //用于控制是否continue
       for (var j = 0; j < enemyArray.length; j++) {
-        if (isCrash(bulletArray[i], enemyArray[j])) {
+        if (isCrash(bulletArray[i], enemyArray[j], i)) {
           enemyArray.splice(j, 1);
           j--;
           bulletArray.splice(i, 1);
@@ -105,16 +107,15 @@ window.onload = () => {
           break;
         }
       }
-      if (flag == 1) {
+      if (flag === 1) {
         continue;
       }
     }
   }, 30);
 
   //判断对象是否相交（有交集）
-  function isCrash(enemy, aircraft) {
-    console.log("enemy", enemy);
-    console.log("aircraft", aircraft);
+  function isCrash(enemy, aircraft, i) {
+    // console.log("aircraft", aircraft);
     //分别获取2个矩形的最值
     const minX1 = enemy.x; //47
     const minY1 = enemy.y; // 380
